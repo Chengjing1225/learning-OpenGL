@@ -121,7 +121,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="C:\Users\93731\Desktop\glad\src\glad.c" />
+    <ClCompile Include="..\..\..\..\glad\src\glad.c" />
     <ClCompile Include="helloWindow.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
