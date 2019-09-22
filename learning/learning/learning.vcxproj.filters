@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="资源文件\Imgs">
+      <UniqueIdentifier>{afd2e41b-692b-4560-94fa-b719e41af58b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="helloWindow.cpp">
@@ -24,9 +27,18 @@
     <ClCompile Include="Img.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="myShader.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Shader.h">
+    <ClInclude Include="myShader.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="FileSystem.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="root_directory.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

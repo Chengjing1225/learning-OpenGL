@@ -124,9 +124,12 @@
     <ClCompile Include="..\..\..\..\glad\src\glad.c" />
     <ClCompile Include="helloWindow.cpp" />
     <ClCompile Include="Img.cpp" />
+    <ClCompile Include="myShader.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Shader.h" />
+    <ClInclude Include="FileSystem.h" />
+    <ClInclude Include="myShader.h" />
+    <ClInclude Include="root_directory.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="shader.fs" />
