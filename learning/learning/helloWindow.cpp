@@ -2,7 +2,11 @@
 #include <GLFW/glfw3.h>
 #include <iostream>
 #include <stb/stb_image.h>
-#include <experimental/filesystem>
+
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+
 #include "myShader.h"
 //#include "FileSystem.h"
 
@@ -14,6 +18,8 @@ void processInput(GLFWwindow *window);
 // settings
 const unsigned int SCR_WIDTH = 800;
 const unsigned int SCR_HEIGHT = 600;
+
+//float mixValue = 0.2f;
 
 
 //#pragma warning(disable : 4996)
@@ -58,10 +64,10 @@ int main()
 	// ------------------------------------------------------------------
 	float vertices[] = {
 		// positions         // colors             //纹理
-		 0.5f, 0.5f, 0.0f,  1.0f, 0.0f, 0.0f,   2.0f, 2.0f,			//右上
-		 0.5f, -0.5f, 0.0f,  0.0f, 1.0f, 0.0f,  2.0f, 0.0f,			//右下
-		 -0.5f,-0.5f, 0.0f,  0.0f, 0.0f, 1.0f,   0.0f, 0.0f,		    //左下
-		 -0.5f, 0.5f, 0.0f, 1.0f, 1.0f,  0.0f,   0.0f,2.0f			//左上
+		 0.5f, 0.5f, 0.0f,   1.0f, 1.0f,			//右上
+		 0.5f, -0.5f, 0.0f,  1.0f, 0.0f,			//右下
+		 -0.5f,-0.5f, 0.0f,  0.0f, 0.0f,		    //左下
+		 -0.5f, 0.5f, 0.0f,  0.0f, 1.0f			//左上
 	};
 	unsigned int  indices[] = {
 		0,1,3,
@@ -83,15 +89,11 @@ int main()
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
 	// position attribute
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
 	// color attribute
-	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
+	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
 	glEnableVertexAttribArray(1);
-
-	//纹理
-	glVertexAttribPointer(2, 2, GL_FLOAT, GLFW_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
-	glEnableVertexAttribArray(2);
 
 	//第一个纹理
 	unsigned int texture1;
@@ -99,8 +101,8 @@ int main()
 	glGenTextures(1, &texture1);	
 	glBindTexture(GL_TEXTURE_2D, texture1);	
 	//为当前绑定的纹理对象设置环绕、过滤方式
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);	// set texture wrapping to GL_REPEAT (default wrapping method)
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);	// set texture wrapping to GL_REPEAT (default wrapping method)
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	int width, height, nrChannels;
@@ -138,8 +140,8 @@ int main()
 	stbi_image_free(data);
 
 	ourShader.use();//设置uniform之前激活纹理
-	glUniform1i(glGetUniformLocation(ourShader.ID, "texture1"), 0);
-	ourShader.setInt("texture2", 1);		
+	ourShader.setInt("texture1", 0);
+	ourShader.setInt("texture2", 1);
 
 
 	// render loop
@@ -156,15 +158,34 @@ int main()
 		glClear(GL_COLOR_BUFFER_BIT);
 
 		
-		//
 		glActiveTexture(GL_TEXTURE0);//激活纹理单元
 		glBindTexture(GL_TEXTURE_2D, texture1);
 		glActiveTexture(GL_TEXTURE1);
 		glBindTexture(GL_TEXTURE_2D, texture2);
 
+		glm::mat4 transform = glm::mat4(1.0f);
+		//从下面开始变换 即是先旋转后位移的
+		transform = glm::translate(transform, glm::vec3(0.5f, -0.5f,0.0f));
+		transform = glm::rotate(transform, (float)glfwGetTime(), glm::vec3(0.0f, 0.0f, 1.0f));
+		//transform = glm::rotate(transform, glm::radians(90.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+		//transform = glm::scale(transform, (float)glfwGetTime(), glm::vec3(0.5f, 0.5f, 0.5f));
+
 		ourShader.use();
+		//变换矩阵传递给着色器
+		unsigned int transformLoc = glGetUniformLocation(ourShader.ID, "transform");
+		glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
+
 		glBindVertexArray(VAO);
 		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+
+	    transform = glm::mat4(1.0f);
+		transform = glm::translate(transform, glm::vec3(-0.5f, 0.5f, 0.0f));
+		float scaleAmount = sin(glfwGetTime());
+		transform = glm::scale(transform,  glm::vec3(scaleAmount,scaleAmount,scaleAmount));
+		glUniformMatrix4fv(transformLoc, 1, GL_FALSE, &transform[0][0]);
+
+		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+				
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 	}
