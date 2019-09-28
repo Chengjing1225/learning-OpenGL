@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -122,12 +122,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\glad\src\glad.c" />
+    <ClCompile Include="camera.cpp" />
     <ClCompile Include="helloWindow.cpp" />
     <ClCompile Include="Img.cpp" />
     <ClCompile Include="myShader.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="FileSystem.h" />
+    <ClInclude Include="camera.h" />
     <ClInclude Include="myShader.h" />
     <ClInclude Include="root_directory.h" />
   </ItemGroup>
