@@ -50,4 +50,9 @@
       <Filter>源文件</Filter>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="C:\Users\93731\Desktop\container2.png">
+      <Filter>资源文件</Filter>
+    </Image>
+  </ItemGroup>
 </Project>
