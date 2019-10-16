@@ -18,8 +18,36 @@
     <ClCompile Include="helloWindow.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\93731\Desktop\glad\src\glad.c">
+    <ClCompile Include="..\..\..\..\glad\src\glad.c">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="Shader.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Shader.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="vShader.vs">
+      <Filter>源文件</Filter>
+    </None>
+    <None Include="fShader.fs">
+      <Filter>源文件</Filter>
+    </None>
+    <None Include="1.lamp.vs">
+      <Filter>源文件</Filter>
+    </None>
+    <None Include="1.lamp.fs">
+      <Filter>源文件</Filter>
+    </None>
   </ItemGroup>
 </Project>
