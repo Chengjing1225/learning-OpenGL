@@ -1,35 +1,38 @@
 ﻿  helloWindow.cpp
-g:\all_workspace\opengl_space\projects\learning\learning\learning\hellowindow.cpp(146): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
-g:\all_workspace\opengl_space\projects\learning\learning\learning\hellowindow.cpp(171): warning C4244: “=”: 从“double”转换到“T”，可能丢失数据
+g:\all_workspace\opengl_space\projects\learning\learning\learning\hellowindow.cpp(153): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+g:\all_workspace\opengl_space\projects\learning\learning\learning\hellowindow.cpp(178): warning C4244: “=”: 从“double”转换到“T”，可能丢失数据
           with
           [
               T=float
           ]
-g:\all_workspace\opengl_space\projects\learning\learning\learning\hellowindow.cpp(172): warning C4244: “=”: 从“double”转换到“T”，可能丢失数据
+g:\all_workspace\opengl_space\projects\learning\learning\learning\hellowindow.cpp(179): warning C4244: “=”: 从“double”转换到“T”，可能丢失数据
           with
           [
               T=float
           ]
-g:\all_workspace\opengl_space\projects\learning\learning\learning\hellowindow.cpp(173): warning C4244: “=”: 从“double”转换到“T”，可能丢失数据
+g:\all_workspace\opengl_space\projects\learning\learning\learning\hellowindow.cpp(180): warning C4244: “=”: 从“double”转换到“T”，可能丢失数据
           with
           [
               T=float
           ]
-g:\all_workspace\opengl_space\projects\learning\learning\learning\hellowindow.cpp(216): warning C4244: “=”: 从“double”转换到“T”，可能丢失数据
+g:\all_workspace\opengl_space\projects\learning\learning\learning\hellowindow.cpp(224): warning C4244: “=”: 从“double”转换到“T”，可能丢失数据
           with
           [
               T=float
           ]
-g:\all_workspace\opengl_space\projects\learning\learning\learning\hellowindow.cpp(217): warning C4244: “=”: 从“double”转换到“T”，可能丢失数据
+g:\all_workspace\opengl_space\projects\learning\learning\learning\hellowindow.cpp(225): warning C4244: “=”: 从“double”转换到“T”，可能丢失数据
           with
           [
               T=float
           ]
-g:\all_workspace\opengl_space\projects\learning\learning\learning\hellowindow.cpp(248): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-g:\all_workspace\opengl_space\projects\learning\learning\learning\hellowindow.cpp(249): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-g:\all_workspace\opengl_space\projects\learning\learning\learning\hellowindow.cpp(252): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
-g:\all_workspace\opengl_space\projects\learning\learning\learning\hellowindow.cpp(253): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
-g:\all_workspace\opengl_space\projects\learning\learning\learning\hellowindow.cpp(255): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
 g:\all_workspace\opengl_space\projects\learning\learning\learning\hellowindow.cpp(256): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-g:\all_workspace\opengl_space\projects\learning\learning\learning\hellowindow.cpp(263): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
-  learning.vcxproj -> G:\all_workspace\OpenGL_space\projects\learning\learning\Debug\learning.exe
+g:\all_workspace\opengl_space\projects\learning\learning\learning\hellowindow.cpp(257): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+g:\all_workspace\opengl_space\projects\learning\learning\learning\hellowindow.cpp(260): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+g:\all_workspace\opengl_space\projects\learning\learning\learning\hellowindow.cpp(261): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+g:\all_workspace\opengl_space\projects\learning\learning\learning\hellowindow.cpp(263): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+g:\all_workspace\opengl_space\projects\learning\learning\learning\hellowindow.cpp(264): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+g:\all_workspace\opengl_space\projects\learning\learning\learning\hellowindow.cpp(271): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
+  LINK : 没有找到 G:\all_workspace\OpenGL_space\projects\learning\learning\Debug\learning.exe 或上一个增量链接没有生成它；正在执行完全链接
+helloWindow.obj : error LNK2019: 无法解析的外部符号 _stbi_load，该符号在函数 "unsigned int __cdecl loadTexture(char const *)" (?loadTexture@@YAIPBD@Z) 中被引用
+helloWindow.obj : error LNK2019: 无法解析的外部符号 _stbi_image_free，该符号在函数 "unsigned int __cdecl loadTexture(char const *)" (?loadTexture@@YAIPBD@Z) 中被引用
+G:\all_workspace\OpenGL_space\projects\learning\learning\Debug\learning.exe : fatal error LNK1120: 2 个无法解析的外部命令
