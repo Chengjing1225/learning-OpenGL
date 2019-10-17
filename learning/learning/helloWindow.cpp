@@ -1,5 +1,6 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
+#define STB_IMAGE_IMPLEMENTATION
 #include <stb/stb_image.h>
 
 #include <glm/glm.hpp>
@@ -10,6 +11,7 @@
 
 #include "Shader.h"
 #include "Camera.h"
+
 
 using namespace std;
 
@@ -142,10 +144,12 @@ int main()
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
-	const char* path = ".\\container2.png";
-	
+	const char* path = ".\\img\\container2.png";	
 	unsigned int diffuseMap = loadTexture(path);
-
+	
+	
+	lightShader.use();
+	lightShader.setInt("material.diffuse", 0);
 
 	//‰÷»æ—≠ª∑
 	while (!glfwWindowShouldClose(window))
@@ -190,8 +194,11 @@ int main()
 		/*lightShader.setVec3("material.ambient", 1.0f, 0.5f, 0.31f);
 		lightShader.setVec3("material.diffuse", 1.0f, 0.5f, 0.31f);*/
 		lightShader.setVec3("material.specular", 0.5f, 0.5f, 0.5f);
-		lightShader.setFloat("material.shininess", 32.0f);
-		lightShader.setInt("material.diffuse", 0);
+		lightShader.setFloat("material.shininess", 64.0f);
+		//lightShader.setInt("material.diffuse", 0);
+
+		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_2D, diffuseMap);
 
 		glBindVertexArray(cubeVAO);
 		glDrawArrays(GL_TRIANGLES, 0, 36);
@@ -299,9 +306,10 @@ unsigned int loadTexture(const char *path) {
 	}
 	else
 	{
-		cout << "Texture Failed to load at path" << path << endl;
+		std::cout << "Texture failed to load at path: " << path << std::endl;
 		stbi_image_free(data);
 	}
+
 	return textureID;
 }
 
