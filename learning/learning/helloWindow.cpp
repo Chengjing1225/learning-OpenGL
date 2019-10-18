@@ -144,12 +144,14 @@ int main()
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
+	//º”‘ÿƒæŒ∆Œ∆¿Ì
 	const char* path = ".\\img\\container2.png";	
 	unsigned int diffuseMap = loadTexture(path);
-	
-	
 	lightShader.use();
 	lightShader.setInt("material.diffuse", 0);
+	//º”‘ÿæµ√ÊŒ∆¿Ì
+	unsigned int specularMap = loadTexture(".\\img\\container2-specular.png");
+	lightShader.setInt("material.specular", 1);
 
 	//‰÷»æ—≠ª∑
 	while (!glfwWindowShouldClose(window))
@@ -165,9 +167,7 @@ int main()
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		lightShader.use();
-		lightShader.setVec3("objectColor", 1.0f, 0.5f, 0.31f);
-		//lightShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
-		
+		lightShader.setVec3("objectColor", 1.0f, 0.5f, 0.31f);		
 
 		glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
 		glm::mat4 view = camera.GetViewMatrix();
@@ -182,23 +182,25 @@ int main()
 		lightColor.x = sin(glfwGetTime() * 2.0f);
 		lightColor.y = sin(glfwGetTime() * 0.7f);
 		lightColor.z = sin(glfwGetTime() * 1.3f);
-		glm::vec3 diffuseColor = lightColor * glm::vec3(0.5f);
-		glm::vec3 ambientColor = diffuseColor * glm::vec3(0.2f);
+		/*glm::vec3 diffuseColor = lightColor * glm::vec3(0.5f);
+		glm::vec3 ambientColor = diffuseColor * glm::vec3(0.2f);*/
 
 		lightShader.setVec3("viewPos", camera.Position);
 		lightShader.setVec3("light.position", lightPos);
-		lightShader.setVec3("light.ambient", ambientColor);
-		lightShader.setVec3("light.diffuse", diffuseColor);
+		lightShader.setVec3("light.ambient", 0.2f, 0.2f, 0.2f);
+		lightShader.setVec3("light.diffuse", 0.5f,0.5f,0.5f);
 		lightShader.setVec3("light.specular", 1.0f, 1.0f, 1.0f);
 
 		/*lightShader.setVec3("material.ambient", 1.0f, 0.5f, 0.31f);
 		lightShader.setVec3("material.diffuse", 1.0f, 0.5f, 0.31f);*/
-		lightShader.setVec3("material.specular", 0.5f, 0.5f, 0.5f);
+		//lightShader.setVec3("material.specular", 0.5f, 0.5f, 0.5f);
 		lightShader.setFloat("material.shininess", 64.0f);
 		//lightShader.setInt("material.diffuse", 0);
 
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, diffuseMap);
+		glActiveTexture(GL_TEXTURE1);
+		glBindTexture(GL_TEXTURE_2D, specularMap);
 
 		glBindVertexArray(cubeVAO);
 		glDrawArrays(GL_TRIANGLES, 0, 36);
