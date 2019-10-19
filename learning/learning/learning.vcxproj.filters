@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="源文件\shader">
+      <UniqueIdentifier>{6dd9634d-694f-4213-9cbc-bf9d36633e7f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="helloWindow.cpp">
@@ -37,17 +40,17 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="vShader.vs">
-      <Filter>源文件</Filter>
-    </None>
-    <None Include="fShader.fs">
-      <Filter>源文件</Filter>
-    </None>
     <None Include="1.lamp.vs">
-      <Filter>源文件</Filter>
+      <Filter>源文件\shader</Filter>
     </None>
     <None Include="1.lamp.fs">
-      <Filter>源文件</Filter>
+      <Filter>源文件\shader</Filter>
+    </None>
+    <None Include="vShader.vs">
+      <Filter>源文件\shader</Filter>
+    </None>
+    <None Include="fShader.fs">
+      <Filter>源文件\shader</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
