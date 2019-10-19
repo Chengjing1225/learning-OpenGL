@@ -52,6 +52,12 @@
     <None Include="fShader.fs">
       <Filter>源文件\shader</Filter>
     </None>
+    <None Include="2.6.more_light_source.vs">
+      <Filter>源文件\shader</Filter>
+    </None>
+    <None Include="2.6.more_light_source.fs">
+      <Filter>源文件\shader</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="C:\Users\93731\Desktop\container2.png">

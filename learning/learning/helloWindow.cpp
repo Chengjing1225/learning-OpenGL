@@ -74,7 +74,7 @@ int main()
 	}
 	glEnable(GL_DEPTH_TEST);
 
-	Shader lightShader("vShader.vs", "fShader.fs");
+	Shader lightShader("vShader.vs", "2.6.more_light_source.fs");
 	Shader lampShader("1.lamp.vs", "1.lamp.fs");	
 	float vertices[] = {
 		-0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  0.0f, 0.0f,
@@ -168,6 +168,13 @@ int main()
 		glm::vec3(-1.3f,  1.0f, -1.5f)
 	};
 
+	glm::vec3 pointLightPositions[] = {
+		glm::vec3(0.7f,  0.2f,  2.0f),
+		glm::vec3(2.3f, -3.3f, -4.0f),
+		glm::vec3(-4.0f,  2.0f, -12.0f),
+		glm::vec3(0.0f,  0.0f, -3.0f)
+	};
+
 	//渲染循环
 	while (!glfwWindowShouldClose(window))
 	{
@@ -178,7 +185,7 @@ int main()
 		//输入
 		processInput(window);
 		//渲染指令
-		glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
+		glClearColor(0.75f, 0.12f, 0.3f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		lightShader.use();
@@ -201,19 +208,58 @@ int main()
 		glm::vec3 ambientColor = diffuseColor * glm::vec3(0.2f);*/
 
 		lightShader.setVec3("viewPos", camera.Position);
-		lightShader.setVec3("light.position", camera.Position);
+		/*lightShader.setVec3("dirLight.direction", pointLightPositions[0]);
 		lightShader.setFloat("light.cutOff", glm::cos(glm::radians(12.5f)));
-		lightShader.setFloat("light.outerCutOff", glm::cos(glm::radians(17.5f)));
-		lightShader.setVec3("light.direction", camera.Front);
-		lightShader.setVec3("light.ambient", 0.1f, 0.1f, 0.1f);
-		lightShader.setVec3("light.diffuse", 0.8f,0.8f,0.8f);
-		lightShader.setVec3("light.specular", 1.0f, 1.0f, 1.0f);
-		lightShader.setFloat("light.constant", 1.0f);
-		lightShader.setFloat("light.linear", 0.09f);
-		lightShader.setFloat("light.quadratic", 0.032f);
+		lightShader.setFloat("light.outerCutOff", glm::cos(glm::radians(17.5f)));*/
+		lightShader.setVec3("dirLight.direction", -0.2f, -1.0f, -0.3f);
+		lightShader.setVec3("dirLight.ambient", 0.3f, 0.24f, 0.14f);
+		lightShader.setVec3("dirLight.diffuse", 0.7f,0.7f,0.7f);
+		lightShader.setVec3("dirLight.specular", 0.5f, 0.5f, 0.5f);
+		
+		lightShader.setVec3("pointLights[0].direction", pointLightPositions[0]);
+		lightShader.setVec3("pointLights[0].ambient", 0.05f, 0.05f, 0.05f);
+		lightShader.setVec3("pointLights[0].diffuse", 0.8f,0.8f,0.8f);
+		lightShader.setVec3("pointLights[0].specular", 1.0f, 1.0f, 1.0f);
+		lightShader.setFloat("pointLights[0].constant", 1.0f);
+		lightShader.setFloat("pointLights[0].linear", 0.09f);
+		lightShader.setFloat("pointLights[0].quadratic", 0.032f);
+
+		lightShader.setVec3("pointLights[1].direction", pointLightPositions[1]);
+		lightShader.setVec3("pointLights[1].ambient", 0.05f, 0.05f, 0.05f);
+		lightShader.setVec3("pointLights[1].diffuse", 0.8f, 0.8f, 0.8f);
+		lightShader.setVec3("pointLights[1].specular", 1.0f, 1.0f, 1.0f);
+		lightShader.setFloat("pointLights[1].constant", 1.0f);
+		lightShader.setFloat("pointLights[1].linear", 0.09f);
+		lightShader.setFloat("pointLights[1].quadratic", 0.032f);
+
+		lightShader.setVec3("pointLights[2].direction", pointLightPositions[2]);
+		lightShader.setVec3("pointLights[2].ambient", 0.05f, 0.05f, 0.05f);
+		lightShader.setVec3("pointLights[2].diffuse", 0.8f, 0.8f, 0.8f);
+		lightShader.setVec3("pointLights[2].specular", 1.0f, 1.0f, 1.0f);
+		lightShader.setFloat("pointLights[2].constant", 1.0f);
+		lightShader.setFloat("pointLights[2].linear", 0.09f);
+		lightShader.setFloat("pointLights[2].quadratic", 0.032f);
+
+		lightShader.setVec3("pointLights[3].direction", pointLightPositions[3]);
+		lightShader.setVec3("pointLights[3].ambient", 0.05f, 0.05f, 0.05f);
+		lightShader.setVec3("pointLights[3].diffuse", 0.8f, 0.8f, 0.8f);
+		lightShader.setVec3("pointLights[3].specular", 1.0f, 1.0f, 1.0f);
+		lightShader.setFloat("pointLights[3].constant", 1.0f);
+		lightShader.setFloat("pointLights[3].linear", 0.09f);
+		lightShader.setFloat("pointLights[3].quadratic", 0.032f);
+
+		lightShader.setVec3("spotLight.position", camera.Position);
+		lightShader.setVec3("spotLight.direction", camera.Front);
+		lightShader.setVec3("spotLight.ambient", 0.0f, 0.0f, 0.0f);
+		lightShader.setVec3("spotLight.diffuse", 1.0f, 1.0f, 1.0f);
+		lightShader.setVec3("spotLight.specular", 1.0f, 1.0f, 1.0f);
+		lightShader.setFloat("spotLight.constant", 1.0f);
+		lightShader.setFloat("spotLight.linear", 0.09f);
+		lightShader.setFloat("spotLight.quadratic", 0.032f);
+		lightShader.setFloat("spotLight.cutOff", cos(glm::radians(12.5f)));
+		lightShader.setFloat("spotLight.outerCutOff", cos(glm::radians(15.0f)));
 
 		lightShader.setFloat("material.shininess", 32.0f);
-		//lightShader.setInt("material.diffuse", 0);
 
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, diffuseMap);
@@ -228,22 +274,23 @@ int main()
 			model = glm::translate(model, cubePositions[i]);
 			float angle = 20.0f * i;
 			model = glm::rotate(model, glm::radians(angle), glm::vec3(1.0f, 0.3f, 0.5f));
-			lightShader.setMat4("model", model);
-			
+			lightShader.setMat4("model", model);			
 
 			glDrawArrays(GL_TRIANGLES, 0, 36);
 		}
-		/*lampShader.use();
+		lampShader.use();
 		lampShader.setMat4("projection", projection);
 		lampShader.setMat4("view", view);
-		model = glm::mat4(1.0f);
-		model = glm::translate(model, lightPos);
-		model = glm::scale(model, glm::vec3(0.2f));
-		lampShader.setMat4("model", model);
 
 		glBindVertexArray(lightVAO);
-		glDrawArrays(GL_TRIANGLES, 0, 36);*/
-
+		for (unsigned int i = 0; i < 4; i++)
+		{
+			model = glm::mat4(1.0f);
+			model = glm::translate(model, pointLightPositions[i]);
+			model = glm::scale(model, glm::vec3(0.2f));
+			lampShader.setMat4("model", model);		
+			glDrawArrays(GL_TRIANGLES, 0, 36);
+		}
 		glfwSwapBuffers(window);//交换颜色缓冲
 		glfwPollEvents();	//检查有没有触发什么事件（比如键盘输入、鼠标移动等）、更新窗口状态，并调用对应的回调函数（可以通过回调方法手动设置）
 	}
@@ -257,12 +304,21 @@ int main()
 	return 0;
 }
 
+
+//灯光位置移动
 void changeLightPos() {
 	lightPos.x = 1.0f + sin(glfwGetTime()) * 2.0f;
 	lightPos.y = sin(glfwGetTime() / 2.0f) * 1.0f;
 
 }
-
+//产生随机三维数
+glm::vec3 randomNum() {
+	float x = (rand() % 10) - 5;
+	float y = (rand() % 10) - 5;
+	float z = (rand() % 15) - 15;
+	glm::vec3 position = glm::vec3(x, y, z);
+	return position;
+}
 // process all input: query GLFW whether relevant keys are pressed/released this frame and react accordingly
 // ---------------------------------------------------------------------------------------------------------
 void processInput(GLFWwindow *window)
@@ -343,11 +399,5 @@ unsigned int loadTexture(const char *path) {
 	return textureID;
 }
 
-glm::vec3 randomNum() {
-	float x = (rand() % 10) - 5;
-	float y = (rand() % 10) - 5;
-	float z = (rand() % 15) - 15;
-	glm::vec3 position = glm::vec3(x, y, z);
-	return position;
-}
+
 

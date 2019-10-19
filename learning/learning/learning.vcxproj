@@ -133,6 +133,8 @@
   <ItemGroup>
     <None Include="1.lamp.fs" />
     <None Include="1.lamp.vs" />
+    <None Include="2.6.more_light_source.fs" />
+    <None Include="2.6.more_light_source.vs" />
     <None Include="fShader.fs" />
     <None Include="vShader.vs" />
   </ItemGroup>
