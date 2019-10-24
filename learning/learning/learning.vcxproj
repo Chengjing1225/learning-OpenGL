@@ -81,7 +81,7 @@
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>opengl32.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opengl32.lib;glfw3.lib;assimp-vc141-mtd.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -124,22 +124,27 @@
     <ClCompile Include="..\..\..\..\glad\src\glad.c" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="helloWindow.cpp" />
+    <ClCompile Include="Mesh.cpp" />
+    <ClCompile Include="Model.cpp" />
     <ClCompile Include="Shader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="Mesh.h" />
+    <ClInclude Include="Model.h" />
     <ClInclude Include="Shader.h" />
+    <ClInclude Include="test_Model.h" />
+    <ClInclude Include="text_Mesh.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="1.lamp.fs" />
     <None Include="1.lamp.vs" />
     <None Include="2.6.more_light_source.fs" />
     <None Include="2.6.more_light_source.vs" />
+    <None Include="3.1.fs" />
+    <None Include="3.1.vs" />
     <None Include="fShader.fs" />
     <None Include="vShader.vs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="C:\Users\93731\Desktop\container2.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

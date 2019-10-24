@@ -30,12 +30,30 @@
     <ClCompile Include="Camera.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="Mesh.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Model.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Shader.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Camera.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Model.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="text_Mesh.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="test_Model.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -58,10 +76,11 @@
     <None Include="2.6.more_light_source.fs">
       <Filter>源文件\shader</Filter>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="C:\Users\93731\Desktop\container2.png">
-      <Filter>资源文件</Filter>
-    </Image>
+    <None Include="3.1.vs">
+      <Filter>源文件\shader</Filter>
+    </None>
+    <None Include="3.1.fs">
+      <Filter>源文件\shader</Filter>
+    </None>
   </ItemGroup>
 </Project>
