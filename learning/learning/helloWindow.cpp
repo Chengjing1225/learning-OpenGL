@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <stdlib.h>
+#include <direct.h>
 
 #include "Shader.h"
 #include "Camera.h"
@@ -19,17 +20,18 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void processInput(GLFWwindow *window);
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
-void changeLightPos();
-unsigned int loadTexture(const char *path);
+string getFullPath(string path);
+//void changeLightPos();
+//unsigned int loadTexture(const char *path);
 
-glm::vec3 randomNum();
+//glm::vec3 randomNum();
 
 
 const unsigned int SCR_WIDTH = 800;
 const unsigned int SCR_HEIGHT = 600;
 
 
-Camera camera(glm::vec3(0.0f, 0.0f, 5.0f));
+Camera camera(glm::vec3(0.0f, -2.0f, 5.0f));
 float lastX = SCR_WIDTH / 2.0f;
 float lastY = SCR_HEIGHT / 2.0f;
 bool firstMouse = true;
@@ -63,7 +65,7 @@ int main()
 	glfwSetCursorPosCallback(window, mouse_callback);
 	glfwSetScrollCallback(window, scroll_callback);
 
-	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+	//glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
 	//初始化glad
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
@@ -74,8 +76,10 @@ int main()
 	glEnable(GL_DEPTH_TEST);
 
 	Shader ourShader("3.1.vs", "3.1.fs");
-	string path = ".\\nanosuit\nanosuit.obj";
-	Model ourModel((char*)path.c_str());
+	/*string path = "nanosuit\\nanosuit.obj";*/
+	Model ourModel(getFullPath("nanosuit\\nanosuit.obj").c_str());
+
+	//glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	
 
 	//渲染循环
@@ -88,20 +92,19 @@ int main()
 		//输入
 		processInput(window);
 		//渲染指令
-		glClearColor(0.75f, 0.12f, 0.3f, 1.0f);
+		glClearColor(0.05f, 0.05f, 0.05f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		ourShader.use();
 		glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
 		glm::mat4 view = camera.GetViewMatrix();
-		ourShader.setMat4("projection", projection);
-		ourShader.setMat4("view", view);
-
+		ourShader.setMat4("projection", projection);			//*
+		ourShader.setMat4("view", view);								//*
 		glm::mat4 model = glm::mat4(1.0f);
 		model = glm::translate(model, glm::vec3(0.0f, -1.75f, 0.0f));
 		model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
 		ourShader.setMat4("model", model);
-		//ourModel.DrawShader(ourShader);
+		ourModel.Draw(ourShader);
 
 
 		glfwSwapBuffers(window);//交换颜色缓冲
@@ -116,11 +119,11 @@ int main()
 
 
 //灯光位置移动
-void changeLightPos() {
-	lightPos.x = 1.0f + sin(glfwGetTime()) * 2.0f;
-	lightPos.y = sin(glfwGetTime() / 2.0f) * 1.0f;
-
-}
+//void changeLightPos() {
+//	lightPos.x = 1.0f + sin(glfwGetTime()) * 2.0f;
+//	lightPos.y = sin(glfwGetTime() / 2.0f) * 1.0f;
+//
+//}
 
 
  //动态设置视口大小
@@ -137,7 +140,7 @@ void mouse_callback(GLFWwindow* window, double xpos, double ypos)
 		lastY = ypos;
 		firstMouse = false;
 	}
-	float xoffset = xpos - lastX;
+	float xoffset = xpos-lastX  ;
 	float yoffset = lastY - ypos;
 
 	lastX = xpos;
@@ -166,6 +169,15 @@ void processInput(GLFWwindow *window)
 		camera.ProcessKeyboard(RIGHT, deltaTime);
 }
 
+string getFullPath(string path) {
+	char* buffer;
+	buffer = _getcwd(NULL, 0);
+	string fullPath(buffer);
+
+	fullPath = fullPath + "\\" + path;
+
+	return fullPath;
+}
 
 
 

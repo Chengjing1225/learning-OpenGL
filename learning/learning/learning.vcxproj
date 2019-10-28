@@ -71,7 +71,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <IncludePath>G:\all_workspace\OpenGL_space\opengl-lib\Includes;$(IncludePath)</IncludePath>
-    <LibraryPath>G:\all_workspace\OpenGL_space\opengl-lib\Libs;$(LibraryPath)</LibraryPath>
+    <LibraryPath>G:\all_workspace\OpenGL_space\projects\learning\learning\Debug;G:\all_workspace\OpenGL_space\opengl-lib\Libs;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -133,8 +133,6 @@
     <ClInclude Include="Mesh.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="Shader.h" />
-    <ClInclude Include="test_Model.h" />
-    <ClInclude Include="text_Mesh.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="1.lamp.fs" />

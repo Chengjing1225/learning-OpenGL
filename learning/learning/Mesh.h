@@ -1,6 +1,6 @@
 #ifndef MESH_H
 #define MESH_H
-#include <glad/glad.h> // holds all OpenGL type declarations
+//#include <glad/glad.h> // holds all OpenGL type declarations
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -8,9 +8,9 @@
 #include "Shader.h"
 
 #include <string>
-#include <fstream>
-#include <sstream>
-#include <iostream>
+//#include <fstream>
+//#include <sstream>
+//#include <iostream>
 #include <vector>
 using namespace std;
 struct Vertex
@@ -18,8 +18,8 @@ struct Vertex
 	glm::vec3 Normal;
 	glm::vec3 Position;
 	glm::vec2 TexCoords;
-	glm::vec3 Tangent;
-	glm::vec3 Bitangent;
+	/*glm::vec3 Tangent;
+	glm::vec3 Bitangent;*/
 };
 
 struct Texture {

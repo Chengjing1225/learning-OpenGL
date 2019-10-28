@@ -1,6 +1,6 @@
 #ifndef  MODEL_H
 #define MODEL_H
-#include "Shader.h"
+//#include "Shader.h"
 #include "Mesh.h"
 #include <assimp/Importer.hpp>
 #include <assimp/scene.h>
@@ -8,37 +8,26 @@
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
-#define STB_IMAGE_IMPLEMENTATION
-#include <stb/stb_image.h>
  
 #include <string>
-#include <fstream>
-#include <sstream>
-#include <iostream>
-#include <map>
 #include <vector>
-
-//unsigned int TextureFromFile(const char *path, const string &directory, bool gamma = false);
 
 class Model
 {
 public:
+	Model(string const &path, bool gamma = false);
+	void Draw(Shader shader);
+
+private:
 	vector<Texture> textures_loaded;
 	vector<Mesh> meshes;
 	string directory;
 	bool gammaCorrection;
 
-	Model(string const &path, bool gamma = false);
-	void Draw(Shader shader);
-	
-private:
-	/*vector<Mesh> meshes;
-	string directory;*/
 	void loadModel(string path);
-	void processNode(aiNode *mesh, const aiScene *scene);
-	Mesh processMesh(aiMesh *mesh, const aiScene *scene);
-	vector<Texture> loadMaterialTextures(aiMaterial *mat, aiTextureType type, string typeName);
-	//unsigned int TextureFromFile(const char *path, const string &directory, bool gamma = false);
+	void processNode(aiNode* mesh, const aiScene* scene);
+	Mesh processMesh(aiMesh* mesh, const aiScene* scene);
+	vector<Texture> loadMaterialTextures(aiMaterial* mat, aiTextureType type, string typeName);
 };
 #endif
 
