@@ -137,6 +137,10 @@
     <None Include="2.6.more_light_source.vs" />
     <None Include="4.3.fs" />
     <None Include="4.3.vs" />
+    <None Include="4.4.fs" />
+    <None Include="4.4.vs" />
+    <None Include="4.4_screen.fs" />
+    <None Include="4.4_screen.vs" />
     <None Include="fShader.fs" />
     <None Include="vShader.vs" />
   </ItemGroup>

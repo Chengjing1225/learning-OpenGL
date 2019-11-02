@@ -64,6 +64,18 @@
     <None Include="4.3.fs">
       <Filter>源文件\shader</Filter>
     </None>
+    <None Include="4.4.vs">
+      <Filter>源文件\shader</Filter>
+    </None>
+    <None Include="4.4.fs">
+      <Filter>源文件\shader</Filter>
+    </None>
+    <None Include="4.4_screen.vs">
+      <Filter>源文件\shader</Filter>
+    </None>
+    <None Include="4.4_screen.fs">
+      <Filter>源文件\shader</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="C:\Users\93731\Desktop\container2.png">
