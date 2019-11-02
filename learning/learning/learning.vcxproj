@@ -141,6 +141,8 @@
     <None Include="4.4.vs" />
     <None Include="4.4_screen.fs" />
     <None Include="4.4_screen.vs" />
+    <None Include="4.5.fs" />
+    <None Include="4.5.vs" />
     <None Include="fShader.fs" />
     <None Include="vShader.vs" />
   </ItemGroup>
