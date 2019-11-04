@@ -143,6 +143,11 @@
     <None Include="4.4_screen.vs" />
     <None Include="4.5.fs" />
     <None Include="4.5.vs" />
+    <None Include="4.8.advanced_glsl.vs" />
+    <None Include="4.8.blue.fs" />
+    <None Include="4.8.green.fs" />
+    <None Include="4.8.red.fs" />
+    <None Include="4.8.yellow.fs" />
     <None Include="fShader.fs" />
     <None Include="vShader.vs" />
   </ItemGroup>

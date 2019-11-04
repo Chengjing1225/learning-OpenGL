@@ -82,6 +82,21 @@
     <None Include="4.5.fs">
       <Filter>源文件\shader</Filter>
     </None>
+    <None Include="4.8.advanced_glsl.vs">
+      <Filter>源文件\shader</Filter>
+    </None>
+    <None Include="4.8.red.fs">
+      <Filter>源文件\shader</Filter>
+    </None>
+    <None Include="4.8.green.fs">
+      <Filter>源文件\shader</Filter>
+    </None>
+    <None Include="4.8.blue.fs">
+      <Filter>源文件\shader</Filter>
+    </None>
+    <None Include="4.8.yellow.fs">
+      <Filter>源文件\shader</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="C:\Users\93731\Desktop\container2.png">
