@@ -71,7 +71,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <IncludePath>G:\all_workspace\OpenGL_space\opengl-lib\Includes;$(IncludePath)</IncludePath>
-    <LibraryPath>G:\all_workspace\OpenGL_space\opengl-lib\Libs;$(LibraryPath)</LibraryPath>
+    <LibraryPath>G:\all_workspace\OpenGL_space\opengl-lib\Libs;G:\all_workspace\OpenGL_space\projects\learning\learning\Debug;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -81,7 +81,7 @@
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>opengl32.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opengl32.lib;glfw3.lib;assimp-vc141-mtd.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -124,10 +124,14 @@
     <ClCompile Include="..\..\..\..\glad\src\glad.c" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="helloWindow.cpp" />
+    <ClCompile Include="Mesh.cpp" />
+    <ClCompile Include="Model.cpp" />
     <ClCompile Include="Shader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="Mesh.h" />
+    <ClInclude Include="Model.h" />
     <ClInclude Include="Shader.h" />
   </ItemGroup>
   <ItemGroup>
@@ -148,7 +152,12 @@
     <None Include="4.8.green.fs" />
     <None Include="4.8.red.fs" />
     <None Include="4.8.yellow.fs" />
+    <None Include="4.9.fs" />
+    <None Include="4.9.gs" />
+    <None Include="4.9.vs" />
     <None Include="fShader.fs" />
+    <None Include="model_shader.fs" />
+    <None Include="model_shader.vs" />
     <None Include="vShader.vs" />
   </ItemGroup>
   <ItemGroup>

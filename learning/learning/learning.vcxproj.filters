@@ -30,12 +30,24 @@
     <ClCompile Include="Camera.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="Mesh.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Model.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Shader.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Camera.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Model.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -95,6 +107,21 @@
       <Filter>源文件\shader</Filter>
     </None>
     <None Include="4.8.yellow.fs">
+      <Filter>源文件\shader</Filter>
+    </None>
+    <None Include="4.9.vs">
+      <Filter>源文件\shader</Filter>
+    </None>
+    <None Include="4.9.fs">
+      <Filter>源文件\shader</Filter>
+    </None>
+    <None Include="4.9.gs">
+      <Filter>源文件\shader</Filter>
+    </None>
+    <None Include="model_shader.vs">
+      <Filter>源文件\shader</Filter>
+    </None>
+    <None Include="model_shader.fs">
       <Filter>源文件\shader</Filter>
     </None>
   </ItemGroup>
