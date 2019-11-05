@@ -12,18 +12,17 @@
 
 class Model{
 public:
+	std::vector<Mesh> meshes;
+	std::string directory;
+	std::vector<Texture> textures_loaded;
+	bool gammaCorrection;
 	Model(const char* path, bool gamma = false):gammaCorrection(gamma) {
 		loadModel(path);
 	}
 
 	void Draw(Shader shader);
 
-private:
-	std::vector<Mesh> meshes;
-	std::string directory;
-	std::vector<Texture> textures_loaded;
-	bool gammaCorrection;
-
+private:	
 	void loadModel(std::string path);
 	unsigned int loadCubemap(vector<std::string> faces);
 	void processNode(aiNode* node, const aiScene* scene);

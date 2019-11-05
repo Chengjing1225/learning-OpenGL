@@ -139,6 +139,12 @@
     <None Include="1.lamp.vs" />
     <None Include="2.6.more_light_source.fs" />
     <None Include="2.6.more_light_source.vs" />
+    <None Include="4.10.1.asteroids.fs" />
+    <None Include="4.10.1.asteroids.vs" />
+    <None Include="4.10.1.fs" />
+    <None Include="4.10.1.vs" />
+    <None Include="4.10.instance.fs" />
+    <None Include="4.10.instance.vs" />
     <None Include="4.3.fs" />
     <None Include="4.3.vs" />
     <None Include="4.4.fs" />

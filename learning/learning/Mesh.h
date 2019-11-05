@@ -23,6 +23,7 @@ struct Texture {
 
 class Mesh {
 public:
+	unsigned VAO;
 	Mesh(const std::vector<Vertex>& vertices, const std::vector<unsigned int>& indices, std::vector<Texture>& textures);
 	void Draw(Shader shader);
 
@@ -32,7 +33,7 @@ public:
 	std::vector<Texture> textures;
 
 private:
-	unsigned int VAO, VBO, EBO;     //渲染环境
+	unsigned int VBO, EBO;     //渲染环境
 
 	void setupMesh();
 };
