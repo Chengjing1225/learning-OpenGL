@@ -1,5 +1,5 @@
 #version 330 core
-layout (points) in;
+layout (triangles) in;
 layout (triangle_strip, max_vertices = 3) out;
 
 in VS_OUT {
@@ -38,5 +38,4 @@ void main()
 	TexCoords = gs_in[2].texCoords;
 	EmitVertex();
 	EndPrimitive();
-
 }

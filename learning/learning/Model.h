@@ -25,6 +25,7 @@ private:
 	bool gammaCorrection;
 
 	void loadModel(std::string path);
+	unsigned int loadCubemap(vector<std::string> faces);
 	void processNode(aiNode* node, const aiScene* scene);
 	Mesh processMesh(aiMesh* mesh, const aiScene* scene);
 	std::vector<Texture> loadMaterialtextures(aiMaterial* mat, aiTextureType type, std::string typeName);

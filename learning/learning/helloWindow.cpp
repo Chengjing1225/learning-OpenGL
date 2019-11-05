@@ -24,9 +24,6 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void processInput(GLFWwindow *window);
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
-void changeLightPos();
-unsigned int loadTexture(const char *path);
-unsigned int loadCubemap(vector<std::string> faces);
 std::string getFullPath(std::string path);
 //glm::vec3 randomNum();
 
@@ -75,61 +72,13 @@ int main() {
 
 	glEnable(GL_DEPTH_TEST);
 
-	Shader ourShader("model_shader.vs", "model_shader.fs");
-	//Shader shaderPoint("4.9.vs", "4.9.fs", "4.9.gs");
+	Shader shader("model_shader.vs", "model_shader.fs");
+	Shader normalShader("4.9.1.vs", "4.9.1.fs", "4.9.1.gs");
 
 	Model ourModel(getFullPath("img\\nanosuit\\nanosuit.obj").c_str());
 
-	/*float points[] = {
-		-0.5f,  0.5f, 1.0f, 0.0f, 0.0f, // 左上
-		 0.5f,  0.5f, 0.0f, 1.0f, 0.0f, // 右上
-		 0.5f, -0.5f, 0.0f, 0.0f, 1.0f, // 右下
-		-0.5f, -0.5f, 1.0f, 1.0f, 0.0f  // 左下
-	};
-
-
-	// point VAO
-	unsigned int lineVAO, lineVBO;
-	glGenVertexArrays(1, &lineVAO);
-	glGenBuffers(1, &lineVBO);
-	glBindVertexArray(lineVAO);
-	glBindBuffer(GL_ARRAY_BUFFER, lineVBO);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(points), points, GL_STATIC_DRAW);
-	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
-	glEnableVertexAttribArray(1);
-	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(2*sizeof(float)));	
-	glBindVertexArray(0);*/
-	// load textures
-	// -------------
-	//unsigned int cubeTexture = loadTexture(".//img//marble.jpg");
-
-	/*unsigned int uniformBlockIndexRed = glGetUniformBlockIndex(shaderRed.ID, "Matrices");
-	unsigned int uniformBlockIndexGreen = glGetUniformBlockIndex(shaderGreen.ID, "Matrices");
-	unsigned int uniformBlockIndexBlue = glGetUniformBlockIndex(shaderBlue.ID, "Matrices");
-	unsigned int uniformBlockIndexYellow = glGetUniformBlockIndex(shaderYellow.ID, "Matrices");
-
-	glUniformBlockBinding(shaderRed.ID, uniformBlockIndexRed, 0);
-	glUniformBlockBinding(shaderGreen.ID, uniformBlockIndexGreen, 0);
-	glUniformBlockBinding(shaderBlue.ID, uniformBlockIndexBlue, 0);
-	glUniformBlockBinding(shaderYellow.ID, uniformBlockIndexYellow, 0);
-
-	unsigned int uboMatrices;
-	glGenBuffers(1, &uboMatrices);
-	glBindBuffer(GL_UNIFORM_BUFFER, uboMatrices);
-	glBufferData(GL_UNIFORM_BUFFER, 2 * sizeof(glm::mat4), NULL, GL_STATIC_DRAW);
-	glBindBuffer(GL_UNIFORM_BUFFER, 0);
-
-	glBindBufferRange(GL_UNIFORM_BUFFER, 0, uboMatrices, 0, 2 * sizeof(glm::mat4));
-
-	glm::mat4 projection = glm::perspective(45.0f, (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
-	glBindBuffer(GL_UNIFORM_BUFFER, uboMatrices);
-	glBufferSubData(GL_UNIFORM_BUFFER, 0, sizeof(glm::mat4), glm::value_ptr(projection));
-	glBindBuffer(GL_UNIFORM_BUFFER, 0);*/
-
-
-	while (!glfwWindowShouldClose(window)) {
-
+	while (!glfwWindowShouldClose(window))
+	{
 		float currentFrame = glfwGetTime();
 		deltaTime = currentFrame - lastFrame;
 		lastFrame = currentFrame;
@@ -139,18 +88,33 @@ int main() {
 		glClearColor(0.05f, 0.05f, 0.05f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		ourShader.use();
+		shader.use();
 
 		glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
 		glm::mat4 view = camera.GetViewMatrix();
-		ourShader.setMat4("projection", projection);
-		ourShader.setMat4("view",view);
+		shader.setMat4("projection", projection);
+		shader.setMat4("view",view);
 
 		glm::mat4 model = glm::mat4(1.0f);
 		model = glm::translate(model, glm::vec3(0.0f, -1.75f, 0.0f));
 		model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
-		ourShader.setMat4("model",model);
-		ourModel.Draw(ourShader);
+		shader.setMat4("model",model);
+
+		ourModel.Draw(shader);
+		
+		normalShader.use();
+
+		projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
+		 view = camera.GetViewMatrix();
+		normalShader.setMat4("projection", projection);
+		normalShader.setMat4("view",view);
+
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(0.0f, -1.75f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
+		normalShader.setMat4("model",model);
+
+		ourModel.Draw(normalShader);
 		
 	/*	shaderPoint.use();	
 		glBindVertexArray(lineVAO);		
@@ -202,74 +166,6 @@ void scroll_callback(GLFWwindow* window, double xoffset, double yoffset) {
 	camera.ProcessMouseScroll(yoffset);
 }
 
-//unsigned int loadTexture(const char *path) {
-//	unsigned int textureID;
-//	glGenTextures(1, &textureID);
-//
-//	int width, height, nrComponents;
-//	unsigned char *data = stbi_load(path, &width, &height, &nrComponents, 0);
-//	if (data)
-//	{
-//		GLenum format;
-//		if (nrComponents == 1)
-//			format = GL_RED;
-//		else if (nrComponents == 3)
-//			format = GL_RGB;
-//		else if (nrComponents == 4)
-//			format = GL_RGBA;
-//
-//		glBindTexture(GL_TEXTURE_2D, textureID);
-//		glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data);
-//		glGenerateMipmap(GL_TEXTURE_2D);
-//
-//		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-//		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-//		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-//		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-//
-//		stbi_image_free(data);
-//	}
-//	else
-//	{
-//		std::cout << "Texture failed to load at path: " << path << std::endl;
-//		stbi_image_free(data);
-//	}
-//
-//	return textureID;
-//}
-//
-//unsigned int loadCubemap(vector<std::string> faces)
-//{
-//	unsigned int textureID;
-//	glGenTextures(1, &textureID);
-//	glBindTexture(GL_TEXTURE_CUBE_MAP, textureID);
-//
-//	int width, height, nrChannels;
-//	for (unsigned int i = 0; i < faces.size(); i++)
-//	{
-//		unsigned char *data = stbi_load(faces[i].c_str(), &width, &height, &nrChannels, 0);
-//		if (data)
-//		{
-//			glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i,
-//				0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data
-//			);
-//			stbi_image_free(data);
-//		}
-//		else
-//		{
-//			std::cout << "Cubemap texture failed to load at path: " << faces[i] << std::endl;
-//			stbi_image_free(data);
-//		}
-//	}
-//	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-//	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-//	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-//	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-//	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
-//
-//	return textureID;
-//}
-
 std::string getFullPath(std::string path) {
 	char* buffer;
 	buffer = _getcwd(NULL, 0);
@@ -277,6 +173,5 @@ std::string getFullPath(std::string path) {
 	
 
 	fullPath = fullPath + "\\" + path;
-	cout << fullPath << endl;
 	return fullPath;
 }

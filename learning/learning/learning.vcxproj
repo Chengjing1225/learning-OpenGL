@@ -152,6 +152,9 @@
     <None Include="4.8.green.fs" />
     <None Include="4.8.red.fs" />
     <None Include="4.8.yellow.fs" />
+    <None Include="4.9.1.fs" />
+    <None Include="4.9.1.gs" />
+    <None Include="4.9.1.vs" />
     <None Include="4.9.fs" />
     <None Include="4.9.gs" />
     <None Include="4.9.vs" />
