@@ -145,6 +145,12 @@
     <None Include="4.10.1.vs" />
     <None Include="4.10.instance.fs" />
     <None Include="4.10.instance.vs" />
+    <None Include="4.11.aa_post.fs" />
+    <None Include="4.11.aa_post.vs" />
+    <None Include="4.11.anti_aliasing.fs" />
+    <None Include="4.11.anti_aliasing.vs" />
+    <None Include="4.11.fs" />
+    <None Include="4.11.vs" />
     <None Include="4.3.fs" />
     <None Include="4.3.vs" />
     <None Include="4.4.fs" />

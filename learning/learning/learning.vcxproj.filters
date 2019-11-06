@@ -151,6 +151,24 @@
     <None Include="4.10.1.asteroids.fs">
       <Filter>源文件\shader</Filter>
     </None>
+    <None Include="4.11.vs">
+      <Filter>源文件\shader</Filter>
+    </None>
+    <None Include="4.11.fs">
+      <Filter>源文件\shader</Filter>
+    </None>
+    <None Include="4.11.anti_aliasing.fs">
+      <Filter>源文件\shader</Filter>
+    </None>
+    <None Include="4.11.aa_post.vs">
+      <Filter>源文件\shader</Filter>
+    </None>
+    <None Include="4.11.aa_post.fs">
+      <Filter>源文件\shader</Filter>
+    </None>
+    <None Include="4.11.anti_aliasing.vs">
+      <Filter>源文件\shader</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="C:\Users\93731\Desktop\container2.png">
