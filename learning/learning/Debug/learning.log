@@ -1,23 +1,23 @@
 ﻿  helloWindow.cpp
-g:\all_workspace\opengl_space\projects\learning\learning\learning\hellowindow.cpp(206): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
-g:\all_workspace\opengl_space\projects\learning\learning\learning\hellowindow.cpp(283): warning C4244: “=”: 从“double”转换到“T”，可能丢失数据
+g:\all_workspace\opengl_space\projects\learning\learning\learning\hellowindow.cpp(126): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+g:\all_workspace\opengl_space\projects\learning\learning\learning\hellowindow.cpp(178): warning C4244: “=”: 从“double”转换到“T”，可能丢失数据
           with
           [
               T=float
           ]
-g:\all_workspace\opengl_space\projects\learning\learning\learning\hellowindow.cpp(284): warning C4244: “=”: 从“double”转换到“T”，可能丢失数据
+g:\all_workspace\opengl_space\projects\learning\learning\learning\hellowindow.cpp(179): warning C4244: “=”: 从“double”转换到“T”，可能丢失数据
           with
           [
               T=float
           ]
-g:\all_workspace\opengl_space\projects\learning\learning\learning\hellowindow.cpp(289): warning C4244: “初始化”: 从“int”转换到“float”，可能丢失数据
-g:\all_workspace\opengl_space\projects\learning\learning\learning\hellowindow.cpp(290): warning C4244: “初始化”: 从“int”转换到“float”，可能丢失数据
-g:\all_workspace\opengl_space\projects\learning\learning\learning\hellowindow.cpp(291): warning C4244: “初始化”: 从“int”转换到“float”，可能丢失数据
-g:\all_workspace\opengl_space\projects\learning\learning\learning\hellowindow.cpp(322): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-g:\all_workspace\opengl_space\projects\learning\learning\learning\hellowindow.cpp(323): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-g:\all_workspace\opengl_space\projects\learning\learning\learning\hellowindow.cpp(326): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
-g:\all_workspace\opengl_space\projects\learning\learning\learning\hellowindow.cpp(327): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
-g:\all_workspace\opengl_space\projects\learning\learning\learning\hellowindow.cpp(329): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-g:\all_workspace\opengl_space\projects\learning\learning\learning\hellowindow.cpp(330): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-g:\all_workspace\opengl_space\projects\learning\learning\learning\hellowindow.cpp(337): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
+g:\all_workspace\opengl_space\projects\learning\learning\learning\hellowindow.cpp(184): warning C4244: “初始化”: 从“int”转换到“float”，可能丢失数据
+g:\all_workspace\opengl_space\projects\learning\learning\learning\hellowindow.cpp(185): warning C4244: “初始化”: 从“int”转换到“float”，可能丢失数据
+g:\all_workspace\opengl_space\projects\learning\learning\learning\hellowindow.cpp(186): warning C4244: “初始化”: 从“int”转换到“float”，可能丢失数据
+g:\all_workspace\opengl_space\projects\learning\learning\learning\hellowindow.cpp(227): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+g:\all_workspace\opengl_space\projects\learning\learning\learning\hellowindow.cpp(228): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+g:\all_workspace\opengl_space\projects\learning\learning\learning\hellowindow.cpp(231): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+g:\all_workspace\opengl_space\projects\learning\learning\learning\hellowindow.cpp(232): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+g:\all_workspace\opengl_space\projects\learning\learning\learning\hellowindow.cpp(234): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+g:\all_workspace\opengl_space\projects\learning\learning\learning\hellowindow.cpp(235): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+g:\all_workspace\opengl_space\projects\learning\learning\learning\hellowindow.cpp(242): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
   learning.vcxproj -> G:\all_workspace\OpenGL_space\projects\learning\learning\Debug\learning.exe
