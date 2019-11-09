@@ -18,7 +18,8 @@ Camera::Camera(float posX, float posY, float posZ, float upX, float upY, float u
 }
 
 glm::mat4 Camera::GetViewMatrix() {
-	return glm::lookAt(Position, Position + Front, Up);
+	//return glm::lookAt(Position, glm::vec3(0.0,0.0,0.0), Up);
+	return glm::lookAt(Position, Position + Front - glm::vec3(0.0, 1.0, 0.0), Up);
 }
 
 void Camera::ProcessKeyboard(Camera_Movement direction, float deltaTime) 
