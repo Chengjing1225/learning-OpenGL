@@ -145,6 +145,11 @@
     <None Include="5.3.shadowDebug.vs" />
     <None Include="5.3.shadowTexture.fs" />
     <None Include="5.3.shadowTexture.vs" />
+    <None Include="5.4.shadow.fs" />
+    <None Include="5.4.shadow.gs" />
+    <None Include="5.4.shadow.vs" />
+    <None Include="5.4.shadowDebug.vs" />
+    <None Include="5.4.shadowDebug.fs" />
     <None Include="fShader.fs" />
     <None Include="vShader.vs" />
   </ItemGroup>

@@ -88,6 +88,21 @@
     <None Include="5.3.shadow.fs">
       <Filter>源文件\shader</Filter>
     </None>
+    <None Include="5.4.shadow.vs">
+      <Filter>源文件\shader</Filter>
+    </None>
+    <None Include="5.4.shadow.fs">
+      <Filter>源文件\shader</Filter>
+    </None>
+    <None Include="5.4.shadow.gs">
+      <Filter>源文件\shader</Filter>
+    </None>
+    <None Include="5.4.shadowDebug.vs">
+      <Filter>源文件\shader</Filter>
+    </None>
+    <None Include="5.4.shadowDebug.fs">
+      <Filter>源文件\shader</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="C:\Users\93731\Desktop\container2.png">
