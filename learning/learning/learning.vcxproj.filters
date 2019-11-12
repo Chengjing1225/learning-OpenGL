@@ -103,6 +103,12 @@
     <None Include="5.4.shadowDebug.fs">
       <Filter>源文件\shader</Filter>
     </None>
+    <None Include="5.5.normal_map.vs">
+      <Filter>源文件\shader</Filter>
+    </None>
+    <None Include="5.5.normal_map.fs">
+      <Filter>源文件\shader</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="C:\Users\93731\Desktop\container2.png">
