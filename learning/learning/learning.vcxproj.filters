@@ -115,6 +115,18 @@
     <None Include="5.6.parallax_mapping.fs">
       <Filter>源文件\shader</Filter>
     </None>
+    <None Include="5.7.hdr.fs">
+      <Filter>源文件\shader</Filter>
+    </None>
+    <None Include="5.7.hdr.vs">
+      <Filter>源文件\shader</Filter>
+    </None>
+    <None Include="5.7.lighting.fs">
+      <Filter>源文件\shader</Filter>
+    </None>
+    <None Include="5.7.lighting.vs">
+      <Filter>源文件\shader</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="C:\Users\93731\Desktop\container2.png">
