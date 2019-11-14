@@ -21,10 +21,7 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void processInput(GLFWwindow *window);
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
-void changeLightPos();
 unsigned int loadTexture(const char *path);
-void renderScene(const Shader &shader);
-void renderCube();
 void renderQuad();
 
 glm::vec3 randomNum();
@@ -32,9 +29,7 @@ glm::vec3 randomNum();
 // settings
 const unsigned int SCR_WIDTH = 800;
 const unsigned int SCR_HEIGHT = 600;
-bool shadows = true;
-bool shadowsKeyPressed = false;
-
+float heightScale = 0.1f;
 Camera camera(glm::vec3(0.0f, 5.0f, 5.0f));
 float lastX = SCR_WIDTH / 2.0f;
 float lastY = SCR_HEIGHT / 2.0f;
@@ -45,10 +40,6 @@ float lastFrame = 0.0f;
 
 bool blinn = false;
 bool blinnKeyPressed = false;
-
-glm::vec3 lightPos(1.2f, 1.0f, 2.0f);
-
-//unsigned int planeVAO;
 
 int main()
 {
@@ -90,16 +81,18 @@ int main()
 
 	// build and compile shaders
 	// -------------------------
-	Shader shader("5.5.normal_map.vs", "5.5.normal_map.fs");
+	Shader shader("5.6.parallax_mapping.vs", "5.6.parallax_mapping.fs");
 
 	// load textures
 	// -------------
-	unsigned int diffuseMap = loadTexture(".//img//brickwall.jpg");
+	unsigned int diffuseMap = loadTexture(".//img//bricks2.jpg");
 	unsigned int normalMap = loadTexture(".//img//brickwall_normal.jpg");
+	unsigned int heightMap = loadTexture(".//img//bricks2_disp.jpg");
 
 	shader.use();
 	shader.setInt("diffuseMap", 0);
 	shader.setInt("normalMap", 1);
+	shader.setInt("depthMap", 2);
 		
 		// lighting info
 	// -------------
@@ -135,10 +128,13 @@ int main()
 		shader.setMat4("model", model);
 		shader.setVec3("viewPos", camera.Position);
 		shader.setVec3("lightPos", lightPos);
+		shader.setFloat("heightScale", heightScale);
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, diffuseMap);
 		glActiveTexture(GL_TEXTURE1);
 		glBindTexture(GL_TEXTURE_2D, normalMap);
+		glActiveTexture(GL_TEXTURE2);
+		glBindTexture(GL_TEXTURE_2D, heightMap);
 		//renderScene(shader);
 		renderQuad();
 		
@@ -260,14 +256,6 @@ void renderQuad()
 	glBindVertexArray(0);
 }
 
-
-
-//灯光位置移动
-void changeLightPos() {
-	lightPos.x = 1.0f + sin(glfwGetTime()) * 2.0f;
-	lightPos.y = sin(glfwGetTime() / 2.0f) * 1.0f;
-
-}
 //产生随机三维数
 glm::vec3 randomNum() {
 	float x = (rand() % 10) - 5;
@@ -290,15 +278,22 @@ void processInput(GLFWwindow *window)
 		camera.ProcessKeyboard(LEFT, deltaTime);
 	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
 		camera.ProcessKeyboard(RIGHT, deltaTime);
-	if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS && !shadowsKeyPressed)
+
+	if (glfwGetKey(window, GLFW_KEY_Q) == GLFW_PRESS)
 	{
-		shadows = !shadows;
-		shadowsKeyPressed = true;
-		cout << "space" << endl;
+		if (heightScale > 0.0f)
+			heightScale -= 0.0005f;
+		else
+			heightScale = 0.0f;
+		cout << heightScale << endl;
 	}
-	if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_RELEASE)
+	else if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS)
 	{
-		shadowsKeyPressed = false;
+		if (heightScale < 1.0f)
+			heightScale += 0.0005f;
+		else
+			heightScale = 1.0f;
+		cout << heightScale << endl;
 	}
 }
 
