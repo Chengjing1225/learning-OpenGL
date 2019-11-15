@@ -158,6 +158,13 @@
     <None Include="5.7.lighting.vs" />
     <None Include="5.6.parallax_mapping.fs" />
     <None Include="5.6.parallax_mapping.vs" />
+    <None Include="5.8.bloom.fs" />
+    <None Include="5.8.bloom.vs" />
+    <None Include="5.8.bloom_final.fs" />
+    <None Include="5.8.bloom_final.vs" />
+    <None Include="5.8.blur.fs" />
+    <None Include="5.8.blur.vs" />
+    <None Include="5.8.light_Box.fs" />
     <None Include="fShader.fs" />
     <None Include="vShader.vs" />
   </ItemGroup>
