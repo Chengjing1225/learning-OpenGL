@@ -169,6 +169,24 @@
     <None Include="4.11.anti_aliasing.vs">
       <Filter>源文件\shader</Filter>
     </None>
+    <None Include="5.9.g_buffer.vs">
+      <Filter>源文件\shader</Filter>
+    </None>
+    <None Include="5.9.g_buffer.fs">
+      <Filter>源文件\shader</Filter>
+    </None>
+    <None Include="5.9.defferred_light_box.fs">
+      <Filter>源文件\shader</Filter>
+    </None>
+    <None Include="5.9.defferred_light_box.vs">
+      <Filter>源文件\shader</Filter>
+    </None>
+    <None Include="5.9.defferred_shading.fs">
+      <Filter>源文件\shader</Filter>
+    </None>
+    <None Include="5.9.defferred_shading.vs">
+      <Filter>源文件\shader</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="C:\Users\93731\Desktop\container2.png">

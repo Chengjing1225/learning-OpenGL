@@ -170,6 +170,12 @@
     <None Include="4.9.fs" />
     <None Include="4.9.gs" />
     <None Include="4.9.vs" />
+    <None Include="5.9.defferred_shading.vs" />
+    <None Include="5.9.defferred_light_box.vs" />
+    <None Include="5.9.defferred_shading.fs" />
+    <None Include="5.9.defferred_light_box.fs" />
+    <None Include="5.9.g_buffer.fs" />
+    <None Include="5.9.g_buffer.vs" />
     <None Include="fShader.fs" />
     <None Include="model_shader.fs" />
     <None Include="model_shader.vs" />
